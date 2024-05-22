@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "N5sHYF0ThMOYZIieuXKN/xxiZmNW+9RGR9XGcRyteT4=",
+  "Source": "SignalR_API",
+  "BasePath": "_content/SignalR_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
