@@ -1,9 +1,11 @@
-﻿namespace SignalR_API.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SignalR_API.Models
 {
     public class UserConnection
     {
 
-        public int Id { get; set; }
+        [Key]
         public string ConnectionId { get; set; }
         public string UserId { get; set; }
     }

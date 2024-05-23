@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jf2xOkZ3FjD7PeoFU4JLHrf7muidkj78nHeAUewh+wA5r3hU3Tegc14hE/za+/CgPUhnExGc9/M4XCKUrmNvPA==",
+  "dgSpecHash": "jq3Ajoz6FaUlRmL91MkR1P7owvbtCcaV1wiqNf/mPtGDnnus5abKPXHR/aEBvnr4QeTWL48dLqkPkVuXjF4NZw==",
   "success": true,
-  "projectFilePath": "D:\\.NET Core\\LetCode\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
+  "projectFilePath": "D:\\.NET Core\\Asp.Net Core Web API\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

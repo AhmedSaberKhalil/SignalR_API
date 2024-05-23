@@ -5041,11 +5041,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.NET Core\\LetCode\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
+      "projectUniqueName": "D:\\.NET Core\\Asp.Net Core Web API\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
       "projectName": "SignalR_API",
-      "projectPath": "D:\\.NET Core\\LetCode\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
+      "projectPath": "D:\\.NET Core\\Asp.Net Core Web API\\SignalR_API\\SignalR_API\\SignalR_API.csproj",
       "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "D:\\.NET Core\\LetCode\\SignalR_API\\SignalR_API\\obj\\",
+      "outputPath": "D:\\.NET Core\\Asp.Net Core Web API\\SignalR_API\\SignalR_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -33,10 +33,13 @@ namespace SignalR_API
             }
 
             app.UseAuthorization();
-
-
+           
             app.MapControllers();
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<NotificationHub>("/notificationHub");
+            });
             app.Run();
         }
     }

@@ -1,13 +1,14 @@
-﻿//using Microsoft.AspNet.SignalR;
-using SignalR_API.Data;
+﻿using SignalR_API.Data;
 using SignalR_API.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNet.SignalR.Hubs;
 
 
 namespace SignalR_API
 {
+    [HubName("notificationHub")]
     public class NotificationHub : Hub
     {
         private readonly ApplicationDbContext _context;
@@ -39,7 +40,7 @@ namespace SignalR_API
                 // Rejoin groups on reconnect
                 var userGroups = await _context.UserGroups
                     .Where(ug => ug.UserId == userId)
-                    .Select(ug => ug.Group.Name)
+                    .Select(ug => ug.Group.GroupName)
                     .ToListAsync();
 
                 // when user reconnected get groups name from database and added again
@@ -67,6 +68,24 @@ namespace SignalR_API
 
             await base.OnDisconnectedAsync(exception);
         }
+        // send to all user
+        public async Task SendNotification(string message)
+        {
+            var connections = _context.UserConnections.Select(uc => uc.ConnectionId).ToList();
+            await Clients.Clients(connections).SendAsync("ReceiveMessage", message);
+        }
+
+        // send to spacific user
+        public async Task SendNotificationToUser(string userId, string message)
+        {
+            var userConnection = await _context.UserConnections
+                .FirstOrDefaultAsync(uc => uc.UserId == userId);
+
+            if (userConnection != null)
+            {
+                await Clients.Client(userConnection.ConnectionId).SendAsync("ReceiveMessage", message);
+            }
+        }
 
         // add user Id and group name  to Group table
         public async Task AddUserToGroup(string groupName, int groupId)
@@ -79,11 +98,11 @@ namespace SignalR_API
             }
 
             var group = await _context.Groups
-                .FirstOrDefaultAsync(g => g.Name == groupName);
+                .FirstOrDefaultAsync(g => g.GroupName == groupName);
 
             if (group == null)
             {
-                group = new Group {GroupId = groupId, Name = groupName };
+                group = new Group {GroupId = groupId, GroupName = groupName };
                 _context.Groups.Add(group);
                 await _context.SaveChangesAsync();
             }
@@ -111,12 +130,12 @@ namespace SignalR_API
             }
 
             var group = await _context.Groups
-                .FirstOrDefaultAsync(g => g.Name == groupName);
+                .FirstOrDefaultAsync(g => g.GroupName == groupName);
 
             if (group != null)
             {
                 var userGroup = await _context.UserGroups
-                    .FirstOrDefaultAsync(ug => ug.GroupId == group.Id && ug.UserId == userId);
+                    .FirstOrDefaultAsync(ug => ug.GroupId == group.GroupId && ug.UserId == userId);
 
                 if (userGroup != null)
                 {
